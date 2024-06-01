@@ -77,9 +77,9 @@ def collect_data():
     sum_value = []
 
     try:
-        response = "+04.363+04.366+04.432+05.000+00.000+00.000+00.000+00.000"
+        #response = "+04.363+04.366+04.432+05.000+00.000+00.000+00.000+00.000"
 
-        '''ser1 = serial.Serial(port=comport, baudrate=9600, timeout=2)
+        ser1 = serial.Serial(port=comport, baudrate=9600, timeout=2)
         if not ser1.is_open:
             ser1.open()
             # print('serial Port1 Open for sending #01')
@@ -93,11 +93,11 @@ def collect_data():
         ser1.flush()
         ser1.flushInput()
         ser1.flushOutput()
-        ser1.close()'''
+        ser1.close()
     
         received_buffer = response
-
-        for i in range(0, 6):
+        print(received_buffer)
+        for i in range(7, 13):
             buf1 = buf1 + received_buffer[i + 1]
 
 
@@ -128,11 +128,12 @@ def collect_data():
                 temp_store[i] = 0
         print(list(temp_store))
         calculated_flow = round(temp_store[0],3)
+        print(calculated_flow)
         with open('flow.txt','w+') as file:
             file.write(str(calculated_flow))
             file.close()
         sum_value.append(calculated_flow)
-        calculated_qty = round((((calculated_flow/60)/2),3))
+        calculated_qty = round((((calculated_flow)/60)/2),3)
         if len(qty_list) == 0:
             with open('qty.txt', 'r') as file5:
                 previous_qty = float(file5.read())
@@ -144,14 +145,16 @@ def collect_data():
         with open('qty.txt','w+') as file2:
             file2.write(str(qty))
             file2.close()
-        sum_value.append(calculated_qty)
+        sum_value.append(qty)
         sum_value.append(roll)
         print(sum_value)
 
 
-    except:
-        time.sleep(9)
-        collect_data()
+    #except:
+        #time.sleep(9)
+        #collect_data()
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
 
 
 def create_rawdata():
@@ -248,12 +251,9 @@ def create_zipfile():
         print("Error while deleting dat file: ", datfln)
 
 
-# Copies the zip file in spcbdir & spcb_realtime dir.
+# Copies the zip file in sunjraydir & sunjray_realtime dir.
 def save_zipfile():
-    # shutil.copy(zipfln, spcbdir)
-    # shutil.copy(zipfln, spcb_realtime_path)
-    shutil.copy(zipfln, cpcbdir)
-    # shutil.copy(zipfln, centraldir)    #uncomment if data sending to central server
+    shutil.copy(zipfln, sunjraydir)
     os.unlink(zipfln)
 
 

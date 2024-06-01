@@ -1,0 +1,16 @@
+calculated_flow = (((raw_MaAmps - MinMa)/ (MaxMA-MinMA)) * MaxAbs) * multiplication factor
+
+To calculate the current flow we are using the standardize millamps formula that we are using in RTDAS project. Here the calculated_flow will comes
+with the unit of m3/hr
+
+
+
+
+
+calculated_qty = round((((calculated_flow)/60)/2),3)
+
+1.The above formula was getting used for calculating the QTY value from the current flow. As the current flow was measuring with the units of m3/hr
+  and the current QTY that needs to get add in the previous QTY needs to be get calculated in m3/min , so for that we had divided the value of
+  current flow with 60.
+2.again the calculated QTY was get divided by 2 because , in our ongoing data transmission process in real time the analyzer was getting the
+  '#01' command 2 times within a minute, so to add only one time value we had divided it by 2

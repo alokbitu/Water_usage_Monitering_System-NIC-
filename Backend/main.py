@@ -1,10 +1,8 @@
 from time import sleep
 from threading import *
 
-from spcbru import *
-from spcbdu import *
-from cpcbru import *
-from cpcbdu import *
+from sunjrayru import *
+from sunjraydu import *
 
 
 # Generate one zip file for every minute
@@ -12,8 +10,7 @@ class GMZIPFILE(Thread):
     def run(self):
         print("Program Started")
         create_dirs_pwd()
-        create_dirs_cpcb()
-        create_dirs_spcb()
+        create_dirs_sunjray()
         while True:
             try:
                 zfgen_main()
@@ -21,32 +18,18 @@ class GMZIPFILE(Thread):
                 pass
 
 
-class SPCBUpload(Thread):
+class SUNJRAYUpload(Thread):
     def run(self):
-        print("SPCB Upload Thread Starts")
+        print("SUNJRAY Upload Thread Starts")
         while True:
             try:
-                spcbrumain()
+                sunjrayrumain()
             except:
-                print("Exception in SPCB Realtime upload")
+                print("Exception in SUNJRAY Realtime upload")
             try:
-                spcbdumain()
+                sunjraydumain()
             except:
-                print("Exception in SPCB Delayed upload")
-
-
-class CPCBUpload(Thread):
-    def run(self):
-        print("CPCB Upload Thread Starts")
-        while True:
-            try:
-                cpcbrumain()
-            except:
-                print("Exception in CPCB Realtime upload")
-            try:
-                cpcbdumain()
-            except:
-                print("Exception in CPCB Delayed upload")
+                print("Exception in SUNJRAY Delayed upload")
 
 
 if __name__  == "__main__":
@@ -54,12 +37,9 @@ if __name__  == "__main__":
     t1.start()
     sleep(5)
 
-    # t2 = SPCBUpload()
-    # t2.start()
-    # sleep(5)
 
-    t3 = CPCBUpload()
-    t3.start()
+    t2 = SUNJRAYUpload()
+    t2.start()
     sleep(5)
 
 

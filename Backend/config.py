@@ -5,10 +5,10 @@ analyzers = ["analyzer_264","analyzer_264","analyzer_264"]
 MinMa = [4, 4, 4]
 MaxMa= [20, 20, 20]
 channels = [0, 1, 2]
-maxAbs = [50, 20, 50]
+maxAbs = [3000, 80, 50]
 multiplyFactors = [1, 1, 1]
 
-radius = 600
+radius = 800
 roll = 1
 
 site_id = "site_9991"
@@ -18,11 +18,11 @@ plant_address2 = "759145 Odhisa"
 plant_country = "India"
 version = "ver1.0"
 
-station_name = "SENDEV-00048-1"
+station_name = "SENDEV-00069-1"
 iso_latitude = "20.8653"
 iso_longtitude = "85.1842"
 fsw = site_id+"_"+station_name+"_"
-comport = "/dev/ttyAMA0"
+comport = "/dev/ttyAMA4"
 
 # Grewal AES key
 AES256_KEY = "c2l0ZV8yOTgyXnZlcl8xLjBeT1NQQ0Je"
@@ -38,22 +38,17 @@ site_private_key = "MIIBPQIBAAJBAIk0SGSbyHcCZyrwy0YzxhqUEU/iMDQfVQ/8qaecbNO/DFJw
 
 # IP Addresses
 sunjray_hostAddress = "192.168.0.12:9899"
-ospcb_hostAddress = "ospcb-rtdas.com"
 
 # Sunjray Realtime and Delayed urls
-sunjray_realtime_url = "http://192.168.0.12:9899/sunjrayServer/realtimeUpload"
-sunjray_delayed_url = "http://192.168.0.12:9899/sunjrayServer/delayedUpload"
+sunjray_realtime_url = "http://103.112.26.250:9899/sunjrayServer/realtimeUpload"
+sunjray_delayed_url = "http://103.112.26.250:9899/sunjrayServer/delayedUpload"
 
-# OSPCB Realtime and Delayed urls
-ospcb_realtime_url = "https://ospcb-rtdas.com/OSPCBRTDASServer/realtimeUpload"
-ospcb_delayed_url = "https://ospcb-rtdas.com/OSPCBRTDASServer/delayedUpload"
 
 # Required directories for project functioning
 bkpdir = "BKPFLD"
-cpcbdir = "CPCB"
-spcbdir = "SPCB"
+sunjraydir = "SUNJRAY"
 rddir = "RAWDATA"
 
-# Required directories in CPCB and SPCB for zipfile storing
+# Required directories in SUNJRAY  for zipfile storing
 rtdir = "Realtime"
 dlydir = "Delayed"

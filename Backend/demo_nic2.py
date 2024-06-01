@@ -10,7 +10,7 @@ from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
 import urllib.request
 
-DEVICE_ID = "SENDEV-00048-1"
+DEVICE_ID = "SENDEV-00069-1"
 
 
 
@@ -90,7 +90,7 @@ def third_request():
         "ts": my_datetime,
         "flow": flow,
         "qty": qty,
-        "roll": 0,
+        "roll": 1,
         "key": auth_key,
     }
     print(data)
