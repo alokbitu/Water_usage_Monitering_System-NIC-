@@ -1,0 +1,8 @@
+.border-bold {
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+hr {
+  border-top: 3px solid bold;
+}
