@@ -20,7 +20,7 @@ server = app.server
 conn = mysql.connector.connect(
         host='localhost',
         user='root',
-        password='admin123',
+        password='admin',
         database='nic2'
 )
 
@@ -281,7 +281,7 @@ def update_output(value, n_intervals):
     # Perform actions based on dropdown value
     if value:
         # Fetch data based on the selected value from the dropdown
-        conn1 = mysql.connector.connect(user='root', password='admin123', host='localhost', database='nic2',
+        conn1 = mysql.connector.connect(user='root', password='admin', host='localhost', database='nic2',
                                        auth_plugin='mysql_native_password')
         cur1 = conn1.cursor()
         query = "SELECT datetime, minute_flow FROM minute_flow_table WHERE plant_nm = %s ORDER BY datetime DESC LIMIT 10"
@@ -320,7 +320,7 @@ def create_figure(data):
 
     return fig
 if __name__ == '__main__':
-    app.run_server(debug=True, host='192.168.0.119', port = 3308)
+    app.run_server(debug=True, host='localhost', port = 3308)
 
 
 
